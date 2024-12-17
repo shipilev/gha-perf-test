@@ -31,12 +31,15 @@ jobs:
         cache: maven
         check-latest: true
 
+    - name: Clean
+      run: mvn clean -B --file pom.xml
+
     - name: Run 1
-      run: mvn clean install -B --file pom.xml
+      run: mvn clean test -B --file pom.xml
 
     - name: Run 2
-      run: mvn clean install -B --file pom.xml
+      run: mvn clean test -B --file pom.xml
 
     - name: Run 3
-      run: mvn clean install -B --file pom.xml
+      run: mvn clean test -B --file pom.xml
 
