@@ -9,6 +9,7 @@ import org.openjdk.jmh.runner.options.VerboseMode;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.management.ManagementFactory;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -57,6 +58,13 @@ public class SampleTest {
             pw.println(InetAddress.getAllByName("127.0.0.1"));
             long time2 = System.nanoTime();
             pw.println("getAllByName finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
+        }
+
+        {
+            long time1 = System.nanoTime();
+            pw.println(ManagementFactory.getRuntimeMXBean().getName());
+            long time2 = System.nanoTime();
+            pw.println("PID name finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
         }
     }
 
