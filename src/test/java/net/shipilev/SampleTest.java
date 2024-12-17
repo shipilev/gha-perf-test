@@ -1,6 +1,9 @@
 package net.shipilev;
 
 import org.junit.Test;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,6 +14,18 @@ import java.net.UnknownHostException;
 import java.util.concurrent.TimeUnit;
 
 public class SampleTest {
+
+    @Test
+    public void runJMH() throws RunnerException {
+        PrintWriter pw = new PrintWriter(System.err, true);
+
+        {
+            long time1 = System.nanoTime();
+            new Runner(new OptionsBuilder().include("SampleJMHBench").build()).runSingle();
+            long time2 = System.nanoTime();
+            pw.println("JMH run finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
+        }
+    }
 
     @Test
     public void test() throws IOException {
