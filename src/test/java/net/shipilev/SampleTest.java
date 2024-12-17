@@ -1,5 +1,6 @@
 package net.shipilev;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class SampleTest {
 
     @Test
+    @Ignore
     public void runJMH() throws RunnerException {
         PrintWriter pw = new PrintWriter(System.err, true);
 
