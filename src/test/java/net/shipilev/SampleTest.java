@@ -27,7 +27,7 @@ public class SampleTest {
             Options opts = new OptionsBuilder()
                     .include("SampleJMHBench")
                     .verbosity(VerboseMode.EXTRA)
-                    .jvmArgs("-Xlog:all", "-Xlog:async")
+//                    .jvmArgs("-Xlog:all", "-Xlog:async")
                     .build();
             new Runner(opts).runSingle();
             long time2 = System.nanoTime();
