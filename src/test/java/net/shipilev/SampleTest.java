@@ -3,6 +3,7 @@ package net.shipilev;
 import org.junit.Test;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.VerboseMode;
 
@@ -22,7 +23,12 @@ public class SampleTest {
 
         {
             long time1 = System.nanoTime();
-            new Runner(new OptionsBuilder().include("SampleJMHBench").verbosity(VerboseMode.EXTRA).build()).runSingle();
+            Options opts = new OptionsBuilder()
+                    .include("SampleJMHBench")
+                    .verbosity(VerboseMode.EXTRA)
+                    .jvmArgs("-Xlog:all", "-Xlog:async")
+                    .build();
+            new Runner(opts).runSingle();
             long time2 = System.nanoTime();
             pw.println("JMH run finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
         }
