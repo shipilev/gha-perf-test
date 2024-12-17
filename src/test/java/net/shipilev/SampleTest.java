@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.openjdk.jmh.runner.options.VerboseMode;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +22,7 @@ public class SampleTest {
 
         {
             long time1 = System.nanoTime();
-            new Runner(new OptionsBuilder().include("SampleJMHBench").build()).runSingle();
+            new Runner(new OptionsBuilder().include("SampleJMHBench").verbosity(VerboseMode.EXTRA).build()).runSingle();
             long time2 = System.nanoTime();
             pw.println("JMH run finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
         }
