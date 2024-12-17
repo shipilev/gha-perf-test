@@ -45,6 +45,13 @@ public class SampleTest {
             long time2 = System.nanoTime();
             pw.println("Get Listen address finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
         }
+
+        {
+            long time1 = System.nanoTime();
+            pw.println(InetAddress.getAllByName("127.0.0.1"));
+            long time2 = System.nanoTime();
+            pw.println("getAllByName finished in " + TimeUnit.NANOSECONDS.toMillis(time2 - time1) + " ms");
+        }
     }
 
     private InetAddress getListenAddress() {
