@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         java: [21]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-24.04-arm, ubuntu-22.04-arm]
       fail-fast: false
     name: Test JDK ${{ matrix.java }}, ${{ matrix.os }}, ${{ matrix.mode }}
     timeout-minutes: 180
@@ -30,6 +30,9 @@ jobs:
         java-version: ${{ matrix.java }}
         cache: maven
         check-latest: true
+
+    - name: lscpu
+      run: lscpu
 
     - name: Clean
       run: mvn clean -B --file pom.xml
